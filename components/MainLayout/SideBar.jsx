@@ -14,7 +14,7 @@ export default function SideBar(props) {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-          <Image src={'logo-tfd.svg'}  alt="Logo TFD Marabá" layout="fill" />
+          <Image src={'/logo.png'}  alt="Logo TFD Marabá" fill= 'true' loading="lazy" />
       </div>
       <section className={styles.section}>
         <div className={styles.buttons}>
