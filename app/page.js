@@ -42,7 +42,6 @@ export default function Login(){
         const { token } = response.data;
         localStorage.setItem('token', token);
         console.log(token)
-        redirect('http://localhost:3000/pages/processo')
       })
 
       if (response.ok) {

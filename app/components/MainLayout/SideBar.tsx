@@ -1,16 +1,15 @@
-'use client'
+
 import Image from 'next/image'
 
-
-import { HiHome, HiDownload, HiUpload, HiDocumentReport } from "react-icons/hi";
-import { MdEditDocument, MdOutlineSettings } from "react-icons/md";
-import { RiArrowUpDownLine } from "react-icons/ri";
-import { BiLogOut } from "react-icons/bi";
+import { HiHome, HiDownload, HiUpload, HiDocumentReport } from "react-Icons/hi";
+import { MdEditDocument, MdOutlineSettings } from "react-Icons/md";
+import { RiArrowUpDownLine } from "react-Icons/ri";
+import { BiLogOut } from "react-Icons/bi";
 
 import styles from '@/styles/default_layout/SideBar.module.css'
 import FunctionButton from './FunctionButton'
 
-export default function SideBar(props) {
+export default function SideBar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
