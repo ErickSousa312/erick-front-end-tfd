@@ -5,57 +5,117 @@ import styled from 'styled-components';
 import styles from '@/styles/login/Login.module.css'
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import Btn from '@/components/login/Button/button'
+import Btn from '@/app/components/login/Button/button'
+import axios from 'axios';
+import { Reducer, useReducer } from 'react';
+import { redirect } from 'next/navigation';
+
+function reducer(dadosLogin, action) {
+  switch (action.type) {
+    case 'setUsuario':
+      console.log(dadosLogin.usuario)
+      return { ...dadosLogin, usuario: action.payload };
+    case 'setSenha':
+      return { ...dadosLogin, senha: action.payload };
+    default:
+      throw new Error('Tipo de ação desconhecido.');
+  }
+}
 
 
 export default function Login(){
+
+  const [dadosLogin, dispath] = useReducer(reducer,{
+    usuario :"",
+    senha:""
+  })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Fazer a chamada para a API para autenticar o usuário
+      await axios.post('http://localhost:3004/login/signIn/',{
+          userName: "erick.gaia3",
+          password: "mssg170878"
+      },{ next: { revalidate: 10 } })
+      .then((response)=>{
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+        console.log(token)
+        redirect('http://localhost:3000/pages/processo')
+      })
+
+      if (response.ok) {
+        console.log(response.token )
+        // Autenticação bem-sucedida, receber o token de acesso
+        
+        console.log(token)
+
+        // Armazenar o token no localStorage para uso posterior
+        localStorage.setItem('token', token);
+
+        // Redirecionar para a rota protegida ou página principal
+        // Exemplo: router.push('/rota-protegida');7
+      } else {
+        // Lidar com erros de autenticação, exibir mensagem de erro, etc.
+      }
+    } catch (error) {
+      // Lidar com erros de requisição ou da API
+    }
+  };
+
+  const cookieview = ()=>{
+    const tokenFromStorage = localStorage.getItem('token');
+    console.log(tokenFromStorage)
+  }
+
   return (
-    <div className={styles.mainContainer}>
-    <div className={styles.forms}>
-        <h1 style={{fontWeight: "900", fontSize: "43px", marginTop:"2.5em", color:"rgb(0 55 255);"}}>LOGIN</h1>
-        <h3 className={styles.h3Forms}>Faça login para participar de votações <br /> ou<br /> Criar uma votação</h3>
-        <div className={styles.inputs}>
-        </div>
-        <div className={styles.OU}>
-          <div className={styles.linha2}></div>
-        </div>
-      <Btn 
-          shadow={"5px 5px 12px rgba(0,0,0,30%)"}
-          backgroundColor={'white'}
-          border={'none'}
-          margintop={"2em"}
-          adding={"10px 20px"}
-          cor={"black"}
-          servidor={"google"}>
-          <FcGoogle className={styles.iconGoogle} size={27}></FcGoogle> Entar com o google
-      </Btn>
-      <Btn 
-          shadow={"5px 5px 12px rgba(0,0,0,30%)"}
-          backgroundColor={'white'}
-          border={'none'}
-          margintop={"0em"}
-          adding={"10px 20px"}
-          cor={"black"}
-          servidor={"github"}>
-          <FaGithub className={styles.iconGoogle} size={27}></FaGithub> Entar com o google
-      </Btn>
-    </div>
+  <div className={styles.mainContainer}>
+      <div className={styles.container}>
+        <section>
+        <form method="post" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="usuario"
+              value={dadosLogin.usuario}
+              onChange={(e)=> dispath({type: 'setUsuario', payload: e.target.value})}
+              placeholder="Nome de usuário"
+            />
+            <input
+              type="password"
+              name="senha"
+              value={dadosLogin.senha}
+              onChange={(e)=> dispath({type: 'setSenha', payload: e.target.value})}
+              placeholder="Senha"
+            />
+            <button type="submit">Login</button>
+          </form>
+          <button onClick={cookieview}>verCookie</button>
+        </section>
+      </div>
   </div>
 
   )
 }
 
-const StyledBackground = styled.div`
-width: 100%;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center; 
-`;
+export async function getServerSideProps(context) {// Parse dos cookies da requisição
+  const tokenFromCookie = cookies.token || '';
+  console.log('oiiii')
+  const shouldRedirect = !tokenFromCookie; // Se não houver token no cookie, redirecionar
 
-const StyleIMG = styled(Image)`
-background-size: cover;
-background-position: center;
-object-fit: cover;
-object-position: center;
-`
+  if (shouldRedirect) {
+    return {
+      redirect: {
+        destination: '/pages/processo',
+        permanent: false, // Redirecionamento temporário (302)
+      },
+    };
+  }
+
+  // Se não houver redirecionamento, retorne os dados para a página normalmente
+  return {
+    props: {
+      // Dados a serem passados como props para a página
+    },
+  };
+}
