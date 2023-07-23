@@ -13,7 +13,7 @@ export default function SideBar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-          <Image src={'/logo.png'}  alt="Logo TFD Marabá" fill={true} loading="lazy" />
+          <Image src={'/logo.png'}  alt="Logo TFD Marabá" fill={true} priority={true}/>
       </div>
       <section className={styles.section}>
         <div className={styles.buttons}>

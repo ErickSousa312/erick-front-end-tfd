@@ -24,10 +24,10 @@ function reducer(dadosLogin:TypeLogin, action:ReduceType) {
 
 const Form:React.FC= ()=>{
     const [dadosLogin, dispatch] = useReducer(reducer, initialState);
-    
+
     return(
         <div>
-
+            
         </div>
     )
 }
