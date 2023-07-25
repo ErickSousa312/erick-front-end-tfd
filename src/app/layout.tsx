@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
-import GetRoute from '@/app/provider/defaultLayout';
+import GetRoute from '@/app/components/providerLayout/defaultLayout';
 import React, { ReactNode } from 'react';
 import { type } from 'os';
 
