@@ -4,14 +4,19 @@ import { useRouter } from 'next/navigation';
 import { useCheckUserAuthenticated } from '@/functions/check-user-authenticated';
 import { useEffect } from 'react';
 import { App_Routes } from '@/constants/app-routes';
+import Loading from '../../processo/loading';
+
+type resolvePage= {
+  tokenValido: boolean,
+  loading:boolean
+}
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { push } = useRouter();
 
-  const { tokenValido, loading } = useCheckUserAuthenticated();
+  const { tokenValido, loading }: resolvePage = useCheckUserAuthenticated();
 
   useEffect(() => {
-    console.log(tokenValido + ' auth');
     if (!loading && !tokenValido) {
       push(App_Routes.public.login);
     }

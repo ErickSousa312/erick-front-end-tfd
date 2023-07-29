@@ -3,11 +3,11 @@ export const App_Routes = {
         dashboard: {
             name:'/processo'
         },
-        home: {
-            name:'/home'
+        login: {
+            name:'/login'
         },
     },
     public:{
-        login: '/'
+        login: '/login'
     }
 }
