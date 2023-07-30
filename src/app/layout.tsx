@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import GetRoute from '@/app/components/providerLayout/defaultLayout';
 import React, { ReactNode } from 'react';
 import { type } from 'os';
+import { SessionProvider } from "next-auth/react"
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +13,7 @@ export const metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {

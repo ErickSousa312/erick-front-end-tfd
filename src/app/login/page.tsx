@@ -1,20 +1,41 @@
-
+'use client'
 import styles from '@/styles/login/Login.module.css'
 import FormFields from "./components/formLogin"
 import Image from 'next/image'
+import { useState } from 'react'
 
-async function handleSubmit(): Promise<number>{
-    return setTimeout((promise)=>{},3000)
-}
+import { signIn, signOut } from "next-auth/react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { LoginForm } from "@/app/components/button.component";
 
-function GetDATA(){
-    return new Promise((resolve)=>{
-      setTimeout(()=>{resolve('erick')},3000)
-    })
-  }
-export default async function Login() {
-    // const a = await GetDATA();
-    // You can add any UI inside Loading, including a Skeleton.
+
+// async function handleSubmit(): Promise<number>{
+//     return setTimeout((promise)=>{},3000)
+// }
+
+// function GetDATA(){
+//     return new Promise((resolve)=>{
+//       setTimeout(()=>{resolve('erick')},3000)
+//     })
+//  }
+export default function Login() {
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
+
+    
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
+
+
+    const onSurmit = async (e:React.FormEvent)=>{
+        e.preventDefault();
+        const res = await signIn("credentials", {
+            username: 'erick.gaia3',
+            password: 'mssg170878',
+          });
+          console.log(res)
+    }
+
     return (
         <main className={styles.mainContainer}>
             <section className={styles.container}>                
@@ -23,11 +44,12 @@ export default async function Login() {
             </div> 
             <div className={styles.divForm}></div>
             <div >
-                <form className={styles.form}>
                     <input className={styles.inputs} placeholder="Usuario"></input>
                     <input className={styles.inputs} placeholder="Senha" type='password'></input>
-                    <button className={styles.buttonLogin}>Login</button>
-                </form>
+                    <button className={styles.buttonLogin} onClick={onSurmit}>Login</button>
+                   <LoginForm></LoginForm>
+                <div>
+      </div>
             </div>
 
             </section>
