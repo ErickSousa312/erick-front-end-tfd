@@ -13,8 +13,29 @@
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     border: solid 1px rgba(0, 0, 0, .1);
 }
-
-.buttons :hover{
-    filter: brightness(1.5);
-    border: 1px solid #FFF;
+.label{
+    margin-left: 5px;
 }
+
+
+.buttons:hover{
+    background-position: right center;
+    background-size: 200% auto; 
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse512 1s infinite;
+}
+
+
+@keyframes pulse512 {
+    0% {
+     box-shadow: 0 0 0 0 #010a0cfd;
+    }
+   
+    70% {
+     box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+    }
+   
+    100% {
+     box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+    }
+   }

@@ -1,4 +1,4 @@
-export type ReduceType={
+export type ActionType={
     payload: string|number
     type:string
 }

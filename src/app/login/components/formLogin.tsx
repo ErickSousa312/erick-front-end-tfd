@@ -3,7 +3,7 @@ import styles from '@/styles/login/Login.module.css'
 import { useState, ChangeEvent } from 'react';
 import { signIn } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { TypeLogin } from '@/app/@types/dadosLogin';
+import { TypeLogin } from '@/app/@types/dadosUser';
 
 export default function FormLogin() {
   const router = useRouter();

@@ -5,6 +5,7 @@ import { HiHome, HiDownload, HiUpload, HiDocumentReport } from "react-Icons/hi";
 import { MdEditDocument, MdOutlineSettings } from "react-Icons/md";
 import { RiArrowUpDownLine } from "react-Icons/ri";
 import { BiLogOut } from "react-Icons/bi";
+import { signOut } from 'next-auth/react';
 
 import styles from '@/styles/default_layout/SideBar.module.css'
 import FunctionButton from './FunctionButton'
@@ -13,11 +14,15 @@ export default function SideBar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-          <Image src={'/logo.png'}  alt="Logo TFD Marabá" fill={true} priority={true}/>
+        <Image src={'/logo.png'} alt="Logo TFD Marabá" fill={true} priority={true} />
       </div>
       <section className={styles.section}>
         <div className={styles.buttons}>
-          <FunctionButton icon={HiHome} size={20} text="Home" color="#0B1145" />
+          <FunctionButton
+            icon={HiHome}
+            size={20}
+            text="Home"
+            color="#0B1145" />
           <FunctionButton
             icon={MdEditDocument}
             size={20}
@@ -49,17 +54,17 @@ export default function SideBar() {
             color="#026306"
           />
         </div>
-       
+
       </section>
       <footer className={styles.footer}>
-          <div className={styles.buttonsFotter}>
-            <BiLogOut size={25} color="#FFF" />
-          </div>
-          <div  className={styles.buttonsFotter}>
-            <MdOutlineSettings size={25} color="#FFF" />
-          </div>
-          
-        </footer>
+        <div className={styles.buttonsFotter} onClick={() => { signOut() }}>
+          <BiLogOut size={25} color="#FFF" />
+        </div>
+        <div className={styles.buttonsFotter}>
+          <MdOutlineSettings size={25} color="#FFF" />
+        </div>
+
+      </footer>
     </nav>
   )
 }

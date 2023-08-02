@@ -6,7 +6,7 @@ const FunctionButton: React.FC<TypeButton>= ({ icon:Icon, size , text, color}) =
     return (
         <button className={styles.buttons}  style={{ backgroundColor: color }}>
            <Icon size={size} color="#FFF" />
-           <div>
+           <div className={styles.label}>
                 {text}
            </div>
         </button>
