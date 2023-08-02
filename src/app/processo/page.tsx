@@ -3,13 +3,16 @@ import styles from './page.module.css'
 import { useContext } from 'react'
 import MyContext from '../context/context'
 import useToken from '@/functions/getTokenLocalStorage'
+import { getServerSession } from "next-auth";
+import { authOptions } from '@/lib/auth'
 
 export default async function DashBoard() {
+  const session = await getServerSession(authOptions);
+  console.log(session );
 
   const erick = await GetDATA()
-  console.log(erick)
   return (
-    <>oi {erick}</>
+    <>oi</>
   )
 }
 function GetDATA() {
@@ -18,6 +21,6 @@ function GetDATA() {
     setTimeout(() =>{
 
       resolve('erick');
-    }, 3000);
+    }, 1000);
   });
 }

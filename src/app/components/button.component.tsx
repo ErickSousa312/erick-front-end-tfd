@@ -14,14 +14,14 @@ export const LoginForm = () => {
   const [error, setError] = useState("");
 
   const searchParams = useSearchParams();
-  const callbackUrl = 'http://localhost:3000/processo';
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
       setFormValues({ userName: "", password: "" });
-        console.log(formValues + 'oi2')
+        console.log(formValues )
       const res = await signIn("credentials", {
         redirect:false,
         userName:formValues.userName,
@@ -33,7 +33,8 @@ export const LoginForm = () => {
 
       console.log(res);
       if (!res?.error) {
-        router.push(callbackUrl);
+        console.log('response resposta:')
+        console.log(res)
       } else {
         setError("invalid userName or password");
       }
@@ -45,6 +46,8 @@ export const LoginForm = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    console.log(formValues.userName)
+    console.log(formValues.password)
     setFormValues({ ...formValues, [name]: value });
   };
 

@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { App_Routes } from '@/constants/app-routes';
 import Loading from '../../processo/loading';
 
+import MainView from '@/app/components/MainLayout/MainContainer'
+
 type resolvePage= {
   tokenValido: boolean,
   loading:boolean
@@ -16,6 +18,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 
   const { tokenValido, loading }: resolvePage = useCheckUserAuthenticated();
 
+  console.log('oi')
   useEffect(() => {
     if (!loading && !tokenValido) {
       push(App_Routes.public.login);
@@ -25,7 +28,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   return (
     <>
       {!tokenValido && null}
-      {tokenValido && children}
+      {tokenValido &&<MainView>{children}</MainView>}
     </>
   );
 }

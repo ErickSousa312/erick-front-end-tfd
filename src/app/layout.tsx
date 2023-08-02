@@ -4,6 +4,7 @@ import GetRoute from '@/app/components/providerLayout/defaultLayout';
 import React, { ReactNode } from 'react';
 import { type } from 'os';
 import { SessionProvider } from "next-auth/react"
+import { NextAuthProvider } from './components/providerLayout/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body>
-        <GetRoute>{children}</GetRoute>
+        <NextAuthProvider>
+          <GetRoute>{children}</GetRoute>
+        </NextAuthProvider>
       </body>
     </html>
   );

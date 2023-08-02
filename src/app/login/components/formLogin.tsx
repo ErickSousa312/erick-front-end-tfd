@@ -1,59 +1,64 @@
 'use client'
-import React from "react";
+import styles from '@/styles/login/Login.module.css'
+import { useState, ChangeEvent } from 'react';
+import { signIn } from "next-auth/react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { TypeLogin } from '@/app/@types/dadosLogin';
 
-
-interface FormFieldsState {
-  username: string;
-  password: string;
-}
-
-interface FormFieldsProps {
-  onSubmit: (data: FormFieldsState) => void;
-}
-
-const FormFields: React.FC<FormFieldsProps> = ({ onSubmit }) => {
-  const [state, setState] = React.useState<FormFieldsState>({
-    username: "",
+export default function FormLogin() {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [formValues, setFormValues] = useState<TypeLogin>({
+    userName: "",
     password: "",
   });
+  const [error, setError] = useState<string>('')
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
-  };
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/processo";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit(state);
-  };
+
+  const onSurmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      
+    setLoading(true)
+    //testando rejeição de Promisse
+    // const res2 = await Promise.reject(new Error("Erro simulado"));
+    const res = await signIn("credentials", {
+      redirect: false,
+      userName: formValues.userName,
+      password: formValues.password,
+      callbackUrl
+    });
+    console.log(res + 'response fomr login')
+
+    if(!res?.error){
+        router.push(callbackUrl)
+    }else{
+      setError(res.error)
+    }
+      
+    } catch (error) {
+      setError('Erro ao autenticar. Por favor, tente novamente.')
+    } finally{
+      setLoading(false)
+    }
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormValues((prev) => ({ ...prev, [name]: value }))
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={state.username}
-            onChange={handleInputChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={state.password}
-            onChange={handleInputChange}
-          />
-        </label>
-      </div>
-      <button type="submit">Submit</button>
+    <form className={styles.form}>
+      <input name='userName' value={formValues.userName} className={styles.inputs} placeholder="Usuario" onChange={handleChange}></input>
+      <input name='password' value={formValues.password} className={styles.inputs} placeholder="Senha" type='password' onChange={handleChange}></input>
+      {error && (
+        <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
+      )}
+      <button className={styles.buttonLogin} onClick={onSurmit}>Login</button>
     </form>
-  );
-};
-
-export default FormFields;
+  )
+}

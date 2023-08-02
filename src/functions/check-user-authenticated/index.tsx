@@ -25,10 +25,11 @@ export const useCheckUserAuthenticated = () => {
       .then((response) => {
         if (response.ok) {
 
-          console.log('passou1');
+          console.log('passou token verify ')
+          console.log(response.body);
           setTokenValido(true);
-        } else {
-          console.log('passou2');
+        } else {;
+          console.log('passou token verify ')
         }
       })
       .catch((error) => {

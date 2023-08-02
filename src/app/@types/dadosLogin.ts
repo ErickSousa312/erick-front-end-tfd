@@ -1,4 +1,4 @@
 export type TypeLogin = {
-    usuario:string,
-    senha:string
+    userName:string,
+    password:string
 }
