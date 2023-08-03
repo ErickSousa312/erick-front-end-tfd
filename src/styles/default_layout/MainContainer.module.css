@@ -29,3 +29,7 @@
 .container::-webkit-scrollbar-track {
     background-color: #c9c9c900; /* Cor de fundo da barra de rolagem */
 }
+
+.container::-webkit-scrollbar {
+  right: 5px; /* Move a barra de rolagem 5 pixels para a esquerda */
+}

@@ -44,9 +44,9 @@ export const authOptions: NextAuthOptions = {
         // Verifique se a resposta indica erro ou não é bem-sucedida
         if (response?.ok || response?.error) {
           // Lance um erro com a mensagem do erro retornado pela API ou uma mensagem personalizada
-          throw new Error(response.error || "Credenciais inválidas");
+          return null
         }
-        return response as User
+        return response 
       }
     })
   ],

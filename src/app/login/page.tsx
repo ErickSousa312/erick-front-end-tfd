@@ -8,7 +8,7 @@ export default function Login() {
     <main className={styles.mainContainer}>
       <section className={styles.container}>
         <div className={styles.image}>
-          <Image src={'/logo.png'} width={250} height={110} alt="Logo TFD Marabá" priority={true} />
+          <Image src={'/logo.png'} width={240} height={110} alt="Logo TFD Marabá" priority={true} />
         </div>
         <div className={styles.divForm}></div>
         <div >

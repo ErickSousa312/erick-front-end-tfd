@@ -47,6 +47,10 @@
     border-radius: 1.2rem;
 }
 
+.buttonsFotter:active{
+    background-color:#e5810f!important;
+}
+
 
 .buttonsFotter:hover{
     background-position: right center;

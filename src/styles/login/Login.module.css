@@ -10,14 +10,17 @@
 
 .container{
     display: flex;
-    background-color: rgb(247 247 247);
+    background-color: rgb(130 130 130 / 6%);
     flex-direction: column;
     width: 24rem;
     align-items: center;
     border-radius: 20px;
     box-shadow: 10px 10px 20px rgba(0,0,0,31%);
     height: 460px;
+    box-shadow: 7px 6px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4.5px);
 }
+
 .image{
     margin-top: 3rem;
 }
@@ -62,9 +65,10 @@
     box-shadow: 2px 4px 3px rgba(0,0,0,31%);
 
 }
-
+.buttonLogin:active{
+    background-color: rgb(1, 68, 4);
+}
 .buttonLogin:hover{
-    background-color: rgb(2, 61, 5)!important;
     background-position: right center;
     background-size: 200% auto; 
     -webkit-animation: pulse 2s infinite;
