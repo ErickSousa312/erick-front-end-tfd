@@ -31,7 +31,6 @@ export default function FormLogin() {
       password: formValues.password,
       callbackUrl
     });
-    console.log(res)
 
     if(!res?.error){
         router.push(callbackUrl)

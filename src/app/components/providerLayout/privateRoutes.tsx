@@ -18,7 +18,6 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 
   const { tokenValido, loading }: resolvePage = useCheckUserAuthenticated();
 
-  console.log('oi')
   useEffect(() => {
     if (!loading && !tokenValido) {
       push(App_Routes.public.login);

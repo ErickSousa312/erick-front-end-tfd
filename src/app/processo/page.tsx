@@ -18,7 +18,6 @@ type User = {
 
 export default async function DashBoard() {
   const {user}:User = await getServerSession(authOptions);
-  console.log(user );
 
   const erick = await GetDATA()
   return (

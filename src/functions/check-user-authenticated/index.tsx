@@ -24,16 +24,11 @@ export const useCheckUserAuthenticated = () => {
     })
       .then((response) => {
         if (response.ok) {
-
-          console.log('passou token verify ')
-          console.log(response.body);
           setTokenValido(true);
         } else {;
-          console.log('passou token verify ')
         }
       })
       .catch((error) => {
-        console.error('Erro na verificação do token:', error);
       })
       .finally(() => {
         setLoading(false); // Indica que a verificação do token foi concluída
@@ -41,7 +36,6 @@ export const useCheckUserAuthenticated = () => {
   };
 
   useEffect(() => {
-    console.log('oi1');
     checkToken();
   }, []);
 
