@@ -6,3 +6,10 @@ export type TypeButton = {
     color: string
 }
 
+export type TypeButtonForms={
+    tamanho: string,
+    tipo: string,
+    label:string
+    placeholder:string,
+}
+

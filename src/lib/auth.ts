@@ -2,7 +2,7 @@
 import type { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
-import { TypeUser } from "@/app/@types/dadosUser";
+import { TypeUser } from "@/app/@types/dadosLogin";
 import { TypeJWT } from "@/app/@types/JWT";
 import { User } from 'next-auth';
 
