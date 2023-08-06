@@ -1,4 +1,4 @@
-export type typeFuncionario= {
+export type TypeFuncionario= {
     _id?:number,
     nomeFuncionario:string,
     CPF: String,

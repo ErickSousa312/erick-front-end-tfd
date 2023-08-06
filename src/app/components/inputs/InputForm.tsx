@@ -5,6 +5,7 @@ import { TypeButtonForms } from "@/app/@types/button";
 
 
 const InputForm = ({ tamanho, tipo, label, placeholder }:TypeButtonForms) => {
+  
   return (
     <InputContainer style={{ width: tamanho }}>
       <Title>{label}</Title>
