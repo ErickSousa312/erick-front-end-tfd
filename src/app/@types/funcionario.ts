@@ -1,19 +1,19 @@
 export type TypeFuncionario= {
     _id?:number,
     nomeFuncionario:string,
-    CPF: String,
-    Rg: Number,
-    NumeroMatricula: Number,
-    NumeroPortaria: Number,
-    Cidade: String,
-    UfCidade :String,
-    CEP: String,
+    CPF: string,
+    Rg: number,
+    NumeroMatricula: number,
+    NumeroPortaria: number,
+    Cidade: string,
+    UfCidade :string,
+    CEP: string,
     Celular: [{
-        Numero: Number
+        Numero: number
     }],
-    AtividadeExercida: String
-    DataNascimento: String,
-    CentroDeSaude: String,
-    DataCadastro: String,
-    Observação: String
+    AtividadeExercida: string,
+    DataNascimento: string,
+    CentroDeSaude: string,
+    DataCadastro: string,
+    Observacao: string
 }

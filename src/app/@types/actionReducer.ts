@@ -1,5 +1,5 @@
 export type ActionType={
-    payload: string|number|Object
+    payload: number|string,
     type:string
-    index: number
+    index?: number
 }
