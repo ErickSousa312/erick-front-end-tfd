@@ -19,7 +19,7 @@ export default async function DashBoard() {
   const erick = await GetDATA()
   return (
     <div className={styles.aa}>
-      
+      {user.token}
     </div>
   )
 }

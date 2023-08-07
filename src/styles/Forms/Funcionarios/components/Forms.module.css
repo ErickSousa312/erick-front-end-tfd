@@ -58,12 +58,20 @@
 
 .form-inputLong {
     margin-left: -5px;
-    width: 1000px;
-    height: 47px;
+    width: 60%;
+    height: 53px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    padding: 2px 7px 2px 7px;
+}
+
+.buttonSubmit{
+    display: flex;
+    justify-content: center;
+    height: 78px;
+    align-items: self-end;
 }
 
 .form-input::-webkit-outer-spin-button,

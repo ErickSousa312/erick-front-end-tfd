@@ -2,7 +2,6 @@ import { TypeFuncionario } from "@/app/@types/funcionario";
 import { ActionType } from '@/app/@types/actionReducer'
 
 export function reducerFuncionario(dadosLogin: TypeFuncionario, action: ActionType) {
-    console.log(dadosLogin)
     switch (action.type) {
         case 'set_id':
             return { ...dadosLogin, _id: action.payload };
@@ -23,7 +22,7 @@ export function reducerFuncionario(dadosLogin: TypeFuncionario, action: ActionTy
         case 'setCEP':
             return { ...dadosLogin, CEP: action.payload };
         case 'setCelular':
-            return { ...dadosLogin, Celular: [...dadosLogin.Celular, { Numero: action.payload }] };
+            return { ...dadosLogin, Celular: [ { Numero: action.payload }] };
         case 'setAtividadeExercida':
             return { ...dadosLogin, AtividadeExercida: action.payload };
         case 'setDataNascimento':
@@ -42,14 +41,14 @@ export function reducerFuncionario(dadosLogin: TypeFuncionario, action: ActionTy
 export const initialStateFuncionario : TypeFuncionario = {
     nomeFuncionario: '',
     CPF: '',
-    Rg: 0,
-    NumeroMatricula: 0,
-    NumeroPortaria: 0,
+    Rg: null,
+    NumeroMatricula: null,
+    NumeroPortaria: null,
     Cidade: '',
     UfCidade: '',
     CEP: '',
     Celular: [{
-        Numero: 0
+        Numero: null
     }],
     AtividadeExercida: '',
     DataNascimento: '',

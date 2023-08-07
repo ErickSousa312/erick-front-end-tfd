@@ -18,6 +18,7 @@ export default function MainView({ children }) {
         <main className={styles.main}>
         <SideBar/>
         <div className={styles.container}>{children}</div>
+        <div className={styles.aSideBar}></div>
         </main>
         
       </>

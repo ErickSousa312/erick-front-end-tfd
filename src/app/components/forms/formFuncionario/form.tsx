@@ -3,12 +3,15 @@ import { useReducer } from 'react'
 import { reducerFuncionario } from '@/functions/reducer/reducerFuncionario'
 import { initialStateFuncionario } from '@/functions/reducer/reducerFuncionario'
 import styles from '@/styles/Forms/Funcionarios/components/Forms.module.css'
+import ButtonSubmit from '../../buttons/submitButton/buttonSubmit'
+
+import getTokenSession from '@/functions/getTokenSession'
 
 export default function FormFuncionario() {
     const [dataFuncionario, dispatch] = useReducer(reducerFuncionario, initialStateFuncionario)
 
     return (
-        <form >
+        <div >
             <section className={styles.section1Container}>
                 <label className={styles['form-label']}>
                     Nome do Funcionário:
@@ -39,7 +42,7 @@ export default function FormFuncionario() {
                         className={styles['form-input']}
                         type="number"
                         value={dataFuncionario.Rg}
-                        onChange={(e) => dispatch({ type: 'SET_RG', payload: e.target.value })}
+                        onChange={(e) => dispatch({ type: 'setRg', payload: e.target.value })}
                     />
                 </label>
 
@@ -50,7 +53,7 @@ export default function FormFuncionario() {
                         type="number"
                         value={dataFuncionario.NumeroMatricula}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_NUMERO_MATRICULA', payload: e.target.value })
+                            dispatch({ type: 'setNumeroMatricula', payload: e.target.value })
                         }
                     />
                 </label>
@@ -63,7 +66,7 @@ export default function FormFuncionario() {
                         type="number"
                         value={dataFuncionario.NumeroPortaria}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_NUMERO_PORTARIA', payload: e.target.value })
+                            dispatch({ type: 'setNumeroPortaria', payload: e.target.value })
                         }
                     />
                 </label>
@@ -74,7 +77,7 @@ export default function FormFuncionario() {
                         className={styles['form-input']}
                         type="text"
                         value={dataFuncionario.Cidade}
-                        onChange={(e) => dispatch({ type: 'SET_CIDADE', payload: e.target.value })}
+                        onChange={(e) => dispatch({ type: 'setCidade', payload: e.target.value })}
                     />
                 </label>
 
@@ -84,7 +87,7 @@ export default function FormFuncionario() {
                         className={styles['form-input']}
                         type="text"
                         value={dataFuncionario.UfCidade}
-                        onChange={(e) => dispatch({ type: 'SET_UF_CIDADE', payload: e.target.value })}
+                        onChange={(e) => dispatch({ type: 'setUfCidade', payload: e.target.value })}
                     />
                 </label>
 
@@ -94,7 +97,7 @@ export default function FormFuncionario() {
                         className={styles['form-input']}
                         type="text"
                         value={dataFuncionario.CEP}
-                        onChange={(e) => dispatch({ type: 'SET_CEP', payload: e.target.value })}
+                        onChange={(e) => dispatch({ type: 'setCEP', payload: e.target.value })}
                     />
                 </label>
 
@@ -105,7 +108,7 @@ export default function FormFuncionario() {
                         type="number"
                         value={dataFuncionario.Celular[0].Numero}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_NUMERO_CELULAR', payload: e.target.value })
+                            dispatch({ type: 'setCelular', payload: e.target.value })
                         }
                     />
                 </label>
@@ -118,7 +121,7 @@ export default function FormFuncionario() {
                         type="text"
                         value={dataFuncionario.AtividadeExercida}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_ATIVIDADE_EXERCIDA', payload: e.target.value })
+                            dispatch({ type: 'setAtividadeExercida', payload: e.target.value })
                         }
                     />
                 </label>
@@ -130,7 +133,7 @@ export default function FormFuncionario() {
                         type="text" // ou "date" se preferir um datepicker
                         value={dataFuncionario.DataNascimento}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_DATA_NASCIMENTO', payload: e.target.value })
+                            dispatch({ type: 'setDataNascimento', payload: e.target.value })
                         }
                     />
                 </label>
@@ -142,7 +145,7 @@ export default function FormFuncionario() {
                         type="text"
                         value={dataFuncionario.CentroDeSaude}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_CENTRO_DE_SAUDE', payload: e.target.value })
+                            dispatch({ type: 'setCentroDeSaude', payload: e.target.value })
                         }
                     />
                 </label>
@@ -154,7 +157,7 @@ export default function FormFuncionario() {
                         type="text" // ou "date" se preferir um datepicker
                         value={dataFuncionario.DataCadastro}
                         onChange={(e) =>
-                            dispatch({ type: 'SET_DATA_CADASTRO', payload: e.target.value })
+                            dispatch({ type: 'setDataCadastro', payload: e.target.value })
                         }
                     />
                 </label>
@@ -170,7 +173,9 @@ export default function FormFuncionario() {
                     />
                 </label>
             </section>
-
-        </form>
+            <div className={styles.buttonSubmit}>
+                <ButtonSubmit data={dataFuncionario}></ButtonSubmit>
+            </div>
+        </div>
     )
 }
