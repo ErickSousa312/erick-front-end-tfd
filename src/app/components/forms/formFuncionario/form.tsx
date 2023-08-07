@@ -7,6 +7,7 @@ import ButtonSubmit from '../../buttons/submitButton/buttonSubmit'
 
 import getTokenSession from '@/functions/getTokenSession'
 
+
 export default function FormFuncionario() {
     const [dataFuncionario, dispatch] = useReducer(reducerFuncionario, initialStateFuncionario)
 
@@ -174,7 +175,7 @@ export default function FormFuncionario() {
                 </label>
             </section>
             <div className={styles.buttonSubmit}>
-                <ButtonSubmit data={dataFuncionario}></ButtonSubmit>
+                <ButtonSubmit data={dataFuncionario} rote={'func'}></ButtonSubmit>
             </div>
         </div>
     )
