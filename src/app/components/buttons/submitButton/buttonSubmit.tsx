@@ -1,7 +1,7 @@
 'use client'
 
 import styles from '@/styles/Forms/buttons/submit.module.css'
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 import getTokenSession from '@/functions/getTokenSession';
 
 interface Props<T> {
@@ -26,7 +26,7 @@ function ButtonSubmit<T>({ data, rote }: Props<T>) {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({data}),
             }).then((response) => {
                 console.log(response)
             })
@@ -39,7 +39,7 @@ function ButtonSubmit<T>({ data, rote }: Props<T>) {
         }
     }
     return (
-        <button className={styles.buttonSub} onClick={onSubmit}>Salvar</button>
+            <button className={styles.buttonSub} onClick={onSubmit}>Salvar</button>
     )
 }
 

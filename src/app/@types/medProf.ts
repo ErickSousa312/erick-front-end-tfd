@@ -3,15 +3,15 @@ export type TypeMedProf={
     IdentProfissional: string,
     NomeCompleto: string,
     NumeroRegistro: string,
-    UF: number,
+    UF: string,
     CPF: string,
     DataNascimento: string,
-    Cargo: { type: String, required: true},
-    CodigoCBO: { type: String, required: true },
+    Cargo: { type: string, required: true},
+    CodigoCBO: { type: string, required: true },
     Especialidades: [{
-        Nome: { type: String }
+        Nome: { type: string }
     }],
-    CentroDeSaude: { type: String, required: true },
-    DataCadastro: { type: String, required: true },
-    Afastamento: { type: String }
+    CentroDeSaude: { type: string, required: true },
+    DataCadastro: { type: string, required: true },
+    Afastamento: { type: string }
 }

@@ -7,8 +7,7 @@ export default async function Funcionarios(){
 
     return(
         <div className={styles.MainContainer}>
-          <Label label={'Cadastrar Funcionário'}></Label>
-          <div className={styles.hrLine}></div>
+          <Label label={'Cadastrar Médico/Profissional'}></Label>
             <FormFuncionario/>
         </div>
     )

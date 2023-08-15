@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 export type User = {
     id?: number,
     userName?: string

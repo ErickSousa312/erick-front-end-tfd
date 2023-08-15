@@ -50,15 +50,7 @@ export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
       };
     case 'addEspecialidade':
       return {
-        ...dadoslogin,
-        Especialidades: [...dadoslogin.Especialidades, { Nome: action.payload }],
-      };
-    case 'removeEspecialidade':
-      return {
-        ...dadoslogin,
-        Especialidades: dadoslogin.Especialidades.filter(
-          (especialidade) => especialidade.Nome !== action.payload
-        ),
+        ...dadoslogin, Especialidades: [ { Nome: action.payload }],
       };
     case 'setCentroDeSaude':
       return {
@@ -78,4 +70,21 @@ export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
     default:
       return dadoslogin;
     }
+}
+
+export const initialStateFuncionario : TypeMedProf = {
+  IdentProfissional: '',
+  NomeCompleto: '',
+  NumeroRegistro: '',
+  UF: '',
+  CPF: '',
+  DataNascimento: '',
+  Cargo: '',
+  CodigoCBO:'',
+  Especialidades: [{
+      Nome: ''
+  }],
+  CentroDeSaude: '',
+  DataCadastro: '',
+  Afastamento: ''
 }

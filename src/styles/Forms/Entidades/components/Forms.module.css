@@ -1,0 +1,81 @@
+/* Estilo básico para o formulário */
+.section1Container {
+    margin-top: 2rem;
+    width: 50%;
+    padding: 0px 0px 0px 35px;
+    display: grid;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+    justify-items: self-start;
+}
+
+.section2Container {
+    width: 50%;
+    padding: 0px 0px 0px 35px;
+    display: grid;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(5, 1fr);
+    align-content: center;
+    justify-items: self-start;
+}
+
+.section3Container {
+    width: 50%;
+    padding: 0px 0px 0px 35px;
+    display: grid;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(5, 1fr);
+    align-content: center;
+    justify-items: self-start;
+}
+
+.section4Container {
+    padding: 0px 0px 0px 35px;
+}
+
+/* Estilo para os rótulos */
+.form-label {
+    font-weight: bold;
+    font-size: 13px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+/* Estilo para os inputs */
+.form-input {
+    margin-left: -5px;
+    white-space: pre-wrap;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-inputLong {
+    margin-left: -5px;
+    width: 60%;
+    height: 53px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    padding: 2px 7px 2px 7px;
+}
+
+.buttonSubmit{
+    display: flex;
+    justify-content: center;
+    height: 78px;
+    align-items: self-end;
+}
+
+.form-input::-webkit-outer-spin-button,
+.form-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

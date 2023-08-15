@@ -1,7 +1,7 @@
 import { TypeEntidade } from "@/app/@types/entidade";
 import { ActionType } from "@/app/@types/actionReducer";
 
-export function reducerPaciente(dadosLogin:TypeEntidade, action: ActionType){
+export function reducerEntidade(dadosLogin:TypeEntidade, action: ActionType){
     switch (action.type){
         case 'setId':
             return {
@@ -24,10 +24,20 @@ export function reducerPaciente(dadosLogin:TypeEntidade, action: ActionType){
               Estado: action.payload,
             };
         case'setEspecialidade':{
-            return {...dadosLogin, Especialidade:[...dadosLogin.Especialidades, {Nome:action.payload}]}
+            return {...dadosLogin, Especialidades:[{Nome:action.payload}]}
         }
           default:
             return dadosLogin;        
     }
 
+}
+
+
+export const initialStatEntidade : TypeEntidade = {
+  NomeEntidade: '',
+  Cidade: '',
+  Estado: '',
+  Especialidades: [{
+      Nome: ''
+  }]
 }
