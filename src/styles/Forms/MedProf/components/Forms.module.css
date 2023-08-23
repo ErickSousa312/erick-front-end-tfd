@@ -1,12 +1,12 @@
 /* Estilo básico para o formulário */
 .section1Container {
     margin-top: 2rem;
-    width: 50%;
+    width: 90%;
     padding: 0px 0px 0px 35px;
     display: grid;
     grid-gap: 14px;
     gap: 14px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2,1fr 1fr 1fr 1fr);
     align-content: center;
     justify-items: self-start;
 }
@@ -42,7 +42,7 @@
     font-weight: bold;
     font-size: 13px;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    width: auto;
 }
 
 /* Estilo para os inputs */

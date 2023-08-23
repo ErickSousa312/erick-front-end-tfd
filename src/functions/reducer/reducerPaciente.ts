@@ -1,7 +1,9 @@
 import { TypePaciente } from "@/app/@types/paciente"
 import { ActionType } from '@/app/@types/actionReducer'
+import { Days_One } from "next/font/google";
 
 export function reducerPaciente(dadosLogin: TypePaciente, action: ActionType) {
+    console.log(dadosLogin)
     switch (action.type) {
         case 'setId':
             return { ...dadosLogin, _id: action.payload };
@@ -54,18 +56,40 @@ export function reducerPaciente(dadosLogin: TypePaciente, action: ActionType) {
         case 'setReferencia':
             return { ...dadosLogin, Referencia: action.payload };
         case 'setCelular':
-            return { ...dadosLogin, Celular: [...dadosLogin.Celular,{ Numero: action.payload }] };
+            return { ...dadosLogin, Celular: [{ Numero: action.payload }] };
         case 'setAcompanhantesNome':
             return {
                 ...dadosLogin,
-                Acompanhantes: [
-                  ...dadosLogin.Acompanhantes.slice(0, action.index),
-                  {
-                    ...dadosLogin.Acompanhantes[action.index],
-                    nomeAcompanhante: action.payload,
-                  },
-                  ...dadosLogin.Acompanhantes.slice(1+action.index),
-                ],
+                Acompanhantes: [{
+                    
+                    ...dadosLogin.Acompanhantes[0],
+                    NomeAcompanhante:action.payload
+                }],
+              };
+        case 'setAcompanhantesCPF':
+            return {
+                ...dadosLogin,
+                Acompanhantes: [{
+                    ...dadosLogin.Acompanhantes[0],
+                    NumeroCPF:action.payload
+                }],
+              };
+        
+        case 'setAcompanhantesRG':
+            return {
+                ...dadosLogin,
+                Acompanhantes: [{
+                    ...dadosLogin.Acompanhantes[0],
+                    NumeroRG:action.payload
+                }],
+              };
+        case 'setAcompanhantesDataNascimento':
+            return {
+                ...dadosLogin,
+                Acompanhantes: [{
+                    ...dadosLogin.Acompanhantes[0],
+                    DataNascimento:action.payload
+                }],
               };
         case 'setEmail':
             return { ...dadosLogin, Email: action.payload };
@@ -83,3 +107,46 @@ export function reducerPaciente(dadosLogin: TypePaciente, action: ActionType) {
             throw new Error('Tipo de ação desconhecido.');
     }
 }
+
+
+export const initialStateFuncionario: TypePaciente = {
+    DataNascimento: "",
+    NumeroCPF: "",
+    NumeroRG: "",
+    OrgaoEmissor: "",
+    NumeroCartaoSUS: null,
+    NumeroTituloEleitor: null,
+    EleitorUF: "",
+    NomePaciente: "",
+    NomeSocial: "",
+    Sexo: "",
+    Idade: null,
+    raca: "",
+    cor: "",
+    Sangue: "",
+    DataCadastro: "",
+    NomePaiouResponsavel: "",
+    NomeMae: "",
+    EstadoCivil: "",
+    Endereco: "",
+    Bairro: "",
+    Cidade: "",
+    UF: "",
+    CEP: null,
+    Referencia: "",
+    Celular: [{
+        Numero:null
+    }],
+    Acompanhantes: [{
+        NomeAcompanhante: "",
+        NumeroCPF: "",
+        NumeroRG :"",
+        DataNascimento: "",
+    }],
+    Email: "",
+    identZona: "",
+    TratamentoAtual: "",
+    Ocupacao: "",
+    GrauEstudo: "",
+    Conta: null
+};

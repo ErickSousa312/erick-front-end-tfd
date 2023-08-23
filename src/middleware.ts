@@ -1,6 +1,7 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/processo"],
+  matcher: ["/views/entidades", "/views/medProfs", "/views/processo", "/views/funcionarios"],
+  
   // matcher: ["/((?!register|api|login).*)"],
 };

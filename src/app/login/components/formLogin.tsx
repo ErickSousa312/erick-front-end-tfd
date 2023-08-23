@@ -15,7 +15,7 @@ export default function FormLogin() {
   const [error, setError] = useState<string>('')
 
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/processo";
+  const callbackUrl = searchParams.get("callbackUrl") || "/views/entidades";
 
 
   const onSurmit = async (e: React.FormEvent) => {

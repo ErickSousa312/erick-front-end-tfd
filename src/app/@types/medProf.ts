@@ -1,17 +1,17 @@
 export type TypeMedProf={
     _id?: string,
-    IdentProfissional: string,
+    IdentProfissional: number,
     NomeCompleto: string,
     NumeroRegistro: string,
     UF: string,
     CPF: string,
     DataNascimento: string,
-    Cargo: { type: string, required: true},
-    CodigoCBO: { type: string, required: true },
+    Cargo: string,
+    CodigoCBO: string,
     Especialidades: [{
-        Nome: { type: string }
+        Nome: string 
     }],
-    CentroDeSaude: { type: string, required: true },
-    DataCadastro: { type: string, required: true },
-    Afastamento: { type: string }
+    CentroDeSaude: string,
+    DataCadastro: string,
+    Afastamento: string
 }

@@ -73,7 +73,7 @@ export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
 }
 
 export const initialStateFuncionario : TypeMedProf = {
-  IdentProfissional: '',
+  IdentProfissional: null,
   NomeCompleto: '',
   NumeroRegistro: '',
   UF: '',
