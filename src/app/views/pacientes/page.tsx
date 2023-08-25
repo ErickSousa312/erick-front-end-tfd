@@ -1,4 +1,4 @@
-import styles from '@/styles/Forms/MedProf/MedProf.module.css'
+import styles from '@/styles/Forms/Pacientes/Paciente.module.css'
 import Label from '@/app/components/forms/labelForms/label'
 import FormPaciente from '@/app/components/forms/formPaciente/forms'
 

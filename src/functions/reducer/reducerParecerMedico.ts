@@ -42,3 +42,13 @@ export function reducerParecer (dadosLogin:TypeParecerMedicoAssSocial, action: A
       return dadosLogin;
     }
 }
+
+
+export const initialStatEntidade : TypeParecerMedicoAssSocial = {
+  IdPaciente: null,
+    IdProcesso: null,
+    Entidade: "",
+    TranscriParicaoMedico: "",
+    NumeroPortaria: null,
+    Justificativa: "",
+}

@@ -14,21 +14,22 @@ type User = {
 };
 
 export default async function DashBoard() {
-  const {user}:User = await getServerSession(authOptions);
-
-  const erick = await GetDATA()
+  // const erick = await GetDATA()
   return (
     <div className={styles.aa}>
-      {user.token}
+      <p>oi</p>
     </div>
   )
-}
-function GetDATA() {
-  return new Promise((resolve) => {
-    // Simulando o tempo de espera para a resposta da Promise
-    setTimeout(() =>{
 
-      resolve('erick');
-    }, 1000);
-  });
 }
+
+// }
+// function GetDATA() {
+//   return new Promise((resolve) => {
+//     // Simulando o tempo de espera para a resposta da Promise
+//     setTimeout(() =>{
+
+//       resolve('erick2');
+//     }, 2000);
+//   });
+// }

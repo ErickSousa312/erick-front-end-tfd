@@ -11,7 +11,7 @@ export default function FormPaciente() {
     const [dataPaciente, dispatch] = useReducer(reducerPaciente, initialStateFuncionario)
 
     return (
-        <div >
+        <form >
             <section className={styles.section1Container}>
                 <label className={styles['form-label']}>
                     Data de nascimento
@@ -474,6 +474,6 @@ export default function FormPaciente() {
             <div className={styles.buttonSubmit}>
                 <ButtonSubmit data={dataPaciente} rote={'paciente'}></ButtonSubmit>
             </div>
-        </div>
+        </form>
     )
 }

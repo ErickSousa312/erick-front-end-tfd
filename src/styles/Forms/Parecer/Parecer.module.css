@@ -1,0 +1,18 @@
+.MainContainer{
+    width: 100%;
+    background-color: #00000000;
+    align-self: auto;
+    margin-top: 1rem;
+}
+
+.section1{
+    width: 80%;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.search{
+    width: 90%;
+}
