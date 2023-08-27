@@ -13,7 +13,7 @@ export default async  function Paciente(){
     console.log(data)
     return(
         <div className={styles.MainContainer}>
-          <Label label={'Parecer Médico'}></Label>
+
             <FormEntidade Pacientes={data}/>
         </div>
     )

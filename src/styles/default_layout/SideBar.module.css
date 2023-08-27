@@ -14,8 +14,9 @@
     position: relative;
     height: 17%;
     margin-left: 11px;
-    width: 85%;
+    width: 90%;
     margin-top: 2em;
+    aspect-ratio: 16/4;
 }
 
 .section{

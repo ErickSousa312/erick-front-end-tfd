@@ -1,83 +1,166 @@
 'use client'
-import { useReducer, useState,  useEffect, memo, useMemo  } from 'react'
-import { reducerEntidade } from '@/functions/reducer/reducerEntidade'
-import { initialStatEntidade } from '@/functions/reducer/reducerEntidade'
-import styles from '@/styles/Forms/Funcionarios/components/Forms.module.css'
-import ButtonSubmit from '../../buttons/submitButton/buttonSubmit'
+import { DataGrid, GridColDef, GridToolbar, GridColumnVisibilityModel,GridRowParams  } from '@mui/x-data-grid';
+import Box from '@mui/material/Box';
+import "@/app/components/forms/formParecer/style/teste.css"
+import LinearProgress from '@mui/material/LinearProgress';
+import { useState } from 'react';
+
+import { ptBR } from '@/Traduction/ptBR'
+import Label from '../labelForms/label';
 
 
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+const ArrayCellRenderer = (params) => {
+  const{value}= params
+  console.log(value)
+  if (Array.isArray(value)) {
+    return (
+      <ul>
+        {value.map((item, index) => (
+          <li key={index}>
+            {item.Numero}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  return null;
+};
+const ButtonCellRenderer = ({ value }) => {
+  return (
+    <button>
+      editar
+    </button>
+  );
+};
+
+
 
 
 
 export default function FormEntidade({ Pacientes }) {
-    const [dataEntidade, dispatch] = useReducer(reducerEntidade, initialStatEntidade)
 
-    const [search, setSearch] = useState<string>("")
-    // const data2 = data2.filter((paciente:any)=>paciente.NomePaciente.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+  const [selectedRow, setSelectedRow] = useState(null);
 
-    const [rowData, setRowData] = useState([]);
+  const handleSelectionChange = (params) => {
+    // Atualiza o estado com o ID da linha selecionada
+    console.log(params)
+  };
 
-    const columnDefs = useMemo(() =>[
-        {
-            headerName: 'Expandir',
-            headerGroupComponent: 'MyGroupHeader',
-            children: [
-                
-        { headerName: 'Nome', field: 'NomePaciente', sortable: true, filter: true ,resizable: true,enableRowGroup: true, flex:1},
-        { headerName: 'CPF', field: 'NumeroCPF', sortable: true, filter: true ,resizable: true},
-        { headerName: 'Cartão SUS', field: 'NumeroCartaoSUS', sortable: true, filter: true ,resizable: true},
-        { headerName: 'Numero RG', field: 'NumeroRG', sortable: true, filter: true ,resizable: true},
-        { headerName: 'Idade', field: 'Idade', sortable: true, filter: true ,resizable: true},
-        { headerName: 'cor', field: 'cor', sortable: true, filter: true ,resizable: true,columnGroupShow: 'open' },
-        { headerName: 'Sangue', field: 'Sangue', sortable: true, filter: true ,resizable: true,columnGroupShow: 'open' },
-        { headerName: 'NomeMae', field: 'NomeMae', sortable: true, filter: true ,resizable: true,columnGroupShow: 'open' },
-        { headerName: 'Email', field: 'Email', sortable: true, filter: true ,resizable: true,columnGroupShow: 'open' },
-        { 
-            headerName: 'Ação', 
-            cellRenderer: 'buttonRenderer', // Usaremos um renderer personalizado
-            cellRendererParams: {
-              onClick: (_id) => alert(`Botão clicado para o paciente com ID ${_id}`)
-            }
-          }
-            ]
-        },
-      ],[]);
-
-
-      const Componentes:any = {
-        buttonRenderer: ButtonRenderer
-      };
-
-      function cellClickedListener(event) {
-        // O parâmetro "event" contém informações sobre o evento de clique
-        console.log('Célula clicada!', event.value);
-        
-        // Realize ações com base no evento de clique, se necessário
+  const handleButtonClick = (params) => {
+      console.log(params)
     }
+  ;
 
-    return (
-        <div className="ag-theme-alpine" style={{ height: '86%', width: '100%' }}>
-            {/* <input type='search'/> */}
-      <AgGridReact
-        columnDefs={columnDefs}
-        onCellClicked={cellClickedListener}
-        rowData={Pacientes}
-        components={Componentes}
-        pagination={true}
-        paginationPageSize={15}
-        animateRows={true}
-        rowSelection={'multiple'}
-        suppressRowClickSelection={true}
+  const [columnVisibilityModel, setColumnVisibilityModel] =
+  useState<GridColumnVisibilityModel>({
+    DataNascimento: false,
+    NumeroCPF: true,
+    NumeroRG : true,
+    OrgaoEmissor: false,
+    NumeroCartaoSUS: true,
+    NumeroTituloEleitor: false,
+    EleitorUF: false,
+    NomePaciente: true,
+    NomeSocial: false ,
+    Sexo: true,
+    Idade: true,
+    raca:true,
+    cor:true,
+    Sangue: true,
+    DataCadastro: true,
+    NomePaiouResponsavel: false ,
+    NomeMae: true,
+    EstadoCivil: true ,
+    Endereco: true,
+    Bairro: false,
+    Cidade: false,
+    UF: false,
+    CEP: false,
+    Referencia: false,
+    Celular: true,
+    Email: true,
+    identZona: false,
+    TratamentoAtual: false,
+    Ocupacao: false,
+    GrauEstudo: false,
+    Conta: true,
+  });
+  
+
+  const columns:GridColDef[] = [
+    { field: 'NomePaciente', headerName: 'Nome', width: 200, },
+    { field: 'NumeroCPF', headerName: 'CPF', width: 150 },
+    { field: 'NumeroRG', headerName: 'RG', width: 150 , },
+    { field: 'DataNascimento', headerName: 'Data de Nascimento', width: 200,  },
+  { field: 'OrgaoEmissor', headerName: 'Órgão Emissor', width: 200,  },
+  { field: 'NumeroCartaoSUS', headerName: 'Número Cartão SUS', width: 200,  },
+  { field: 'NumeroTituloEleitor', headerName: 'Número Título Eleitor', width: 200,  },
+  { field: 'EleitorUF', headerName: 'UF Eleitor', width: 200,  },
+  { field: 'NomeSocial', headerName: 'Nome Social', width: 200, },
+  { field: 'Sexo', headerName: 'Sexo', width: 200,  },
+  { field: 'Idade', headerName: 'Idade', width: 200,  },
+  { field: 'raca', headerName: 'Raça', width: 200,  },
+  { field: 'cor', headerName: 'Cor', width: 200,  },
+  { field: 'Sangue', headerName: 'Tipo Sanguíneo', width: 200,  },
+  { field: 'DataCadastro', headerName: 'Data de Cadastro', width: 200,  },
+  { field: 'NomePaiouResponsavel', headerName: 'Nome do Pai ou Responsável', width: 200,  },
+  { field: 'NomeMae', headerName: 'Nome da Mãe', width: 200,  },
+  { field: 'EstadoCivil', headerName: 'Estado Civil', width: 200,  },
+  { field: 'Endereco', headerName: 'Endereço', width: 200,  },
+  { field: 'Bairro', headerName: 'Bairro', width: 200,  },
+  { field: 'Cidade', headerName: 'Cidade', width: 200,  },
+  { field: 'UF', headerName: 'UF', width: 200,  },
+  { field: 'CEP', headerName: 'CEP', width: 200, },
+  { field: 'Referencia', headerName: 'Referência', width: 200,  },
+  { field: `Celular`, headerName: 'Celular', width: 200,renderCell: ArrayCellRenderer,  },
+  { field: 'Email', headerName: 'Email', width: 200,  },
+  { field: 'identZona', headerName: 'Zona de Identificação', width: 200,  },
+  { field: 'TratamentoAtual', headerName: 'Tratamento Atual', width: 200,  },
+  { field: 'Ocupacao', headerName: 'Ocupação', width: 200,  },
+  { field: 'GrauEstudo', headerName: 'Grau de Estudo', width: 200,  },
+  { field: 'Conta', headerName: 'Conta', width: 200,  },
+  { field: 'Editar', headerName: 'Conta', width: 200,  renderCell:ButtonCellRenderer},
+  ];
+
+
+  return (
+  <>
+  <section>
+  <Label label={'Parecer Médico'}></Label>
+  <button className='button'>
+      Novo Parecer
+    </button>
+
+  </section>
+  
+    <Box sx={{ height: '85%', width: '100%' }}>
+      <DataGrid rows={Pacientes}
+       
+        columns={columns}
+        disableRowSelectionOnClick={false}
+        getRowId={(row) => row._id}
+        
+        slots={{ toolbar: GridToolbar, loadingOverlay: LinearProgress }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
+        className="custom-data-grid"
+        localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 25 } },
+        }}
+        pageSizeOptions={[25, 50, 100]}
+        columnVisibilityModel={columnVisibilityModel}
+        onColumnVisibilityModelChange={(newModel) =>
+          setColumnVisibilityModel(newModel)
+        }
+        onCellClick={handleSelectionChange}
+        // onRowSelected={handleRowSelection}
       />
-    </div>
-    )
+    </Box>
+  </>
+    
+  )
 }
-
-function ButtonRenderer(params:any):JSX.Element {
-    return (
-      <button onClick={() => params.onClick(params.data._id)}>Vizualizar histórico</button>
-    );
-  }

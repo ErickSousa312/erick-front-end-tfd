@@ -1,0 +1,102 @@
+.custom-data-grid .MuiDataGrid-row {
+    background-color: lightgray;outline: none;
+     /* Altere a cor de fundo como desejar */
+  }
+
+  .custom-data-grid .MuiDataGrid-toolbarContainer button{
+    color:rgb(255, 255, 255);outline: none;
+  }
+
+  .custom-data-grid .MuiDataGrid-toolbarContainer .MuiInput-underline:before{
+    color:rgb(247, 0, 0);outline: none;border-bottom: 2px solid #ffffffab ;
+  }
+  .custom-data-grid .MuiDataGrid-toolbarContainer .MuiInput-underline:after{
+    color:rgb(247, 0, 0);outline: none;border-bottom: 2px solid #ffffff ;
+  }
+  .custom-data-grid .MuiDataGrid-toolbarContainer .MuiInput-underline:hover{
+    color:rgb(247, 0, 0);outline: none;border-bottom: 0px solid #1b6138 ;
+  }
+  .custom-data-grid .MuiDataGrid-toolbarContainer input{
+    color:rgb(255, 255, 255);outline: none none !important;
+  }
+
+  .custom-data-grid .MuiDataGrid-toolbarContainer svg{
+    color:rgb(255, 255, 255);outline: none !important;
+  }
+  .custom-data-grid .MuiDataGrid-columnHeader:focus-within {
+    outline: none !important;
+  }
+
+  .custom-data-grid .MuiDataGrid-columnHeaderTitleContainer {
+    color:rgb(255, 255, 255);outline: none;
+  }
+  .custom-data-grid .MuiDataGrid-columnHeaderTitleContainer svg {
+    color:rgb(255, 255, 255);outline: none;
+  }
+
+
+  .custom-data-grid  .MuiDataGrid-withBorderColor {
+    border-color: rgb(112 112 112);outline: none;
+}
+
+.custom-data-grid{
+    background-color: #0b1145;
+    border: 1px solid #888888 !important;
+    outline: none;
+}
+.custom-data-grid .MuiDataGrid-virtualScroller{
+    background-color: #959595b5;
+}
+
+.custom-data-grid *:focus{
+    outline: none !important;
+}
+.custom-data-grid .MuiTablePagination-toolbar{
+    color: #ffffff;
+}
+.custom-data-grid .MuiTablePagination-toolbar svg{
+    color: #ffffff;
+}
+.custom-data-grid .MuiDataGrid-selectedRowCount {
+    color: #ffffff;
+}
+
+
+.button{
+  position: absolute;
+    right: 2rem;
+    top: 0.9rem;
+    background-color: #026306;
+    align-items: center;
+    padding: 7px 7px;
+    border-radius: 1.2rem;
+    width: 8rem;
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 8px;
+    border: solid 1px rgba(0, 0, 0, .1);
+    color: white;
+}
+
+.button:hover{
+  background-position: right center;
+  background-size: 200% auto; 
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1s infinite;
+}
+
+.button:active{
+  background-color:#e5810f!important;
+}
+
+@keyframes pulse512 {
+  0% {
+   box-shadow: 0 0 0 0 #010a0cfd;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+ }
