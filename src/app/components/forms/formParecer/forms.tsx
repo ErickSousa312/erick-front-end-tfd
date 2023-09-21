@@ -1,15 +1,18 @@
 'use client'
-import { DataGrid, GridColDef, GridToolbar, GridColumnVisibilityModel,GridRowParams  } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, GridColumnVisibilityModel,GridRowParams,GridRowSelectionModel  } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import "@/app/components/forms/formParecer/style/teste.css"
 import LinearProgress from '@mui/material/LinearProgress';
 import { useState } from 'react';
-
+import { usePathname } from 'next/navigation'
 import { ptBR } from '@/Traduction/ptBR'
 import Label from '../labelForms/label';
 
+import { useRouter } from 'next/navigation';
+
 
 const ArrayCellRenderer = (params) => {
+
   const{value}= params
   console.log(value)
   if (Array.isArray(value)) {
@@ -26,6 +29,7 @@ const ArrayCellRenderer = (params) => {
   return null;
 };
 const ButtonCellRenderer = ({ value }) => {
+  
   return (
     <button>
       editar
@@ -34,22 +38,30 @@ const ButtonCellRenderer = ({ value }) => {
 };
 
 
-
-
-
 export default function FormEntidade({ Pacientes }) {
+  const router = useRouter()
+  const pathname = usePathname()
 
-  const [selectedRow, setSelectedRow] = useState(null);
+  const [ id, setId] = useState<number>(null)
+
+  const [selectedRow, setSelectedRow] = useState(null)
+  const [rowSelectionModel, setRowSelectionModel] = useState<GridRowSelectionModel>([]);
 
   const handleSelectionChange = (params) => {
-    // Atualiza o estado com o ID da linha selecionada
-    console.log(params)
+  
+      setId(params.row._id)
+      console.log(params)
   };
 
-  const handleButtonClick = (params) => {
-      console.log(params)
+  const Nextpage = (params) => {
+    console.log(params)
+      router.push(`${pathname}/${id}`)
     }
   ;
+
+  const isVariavelVazia = () => {
+    return id === null;
+  };
 
   const [columnVisibilityModel, setColumnVisibilityModel] =
   useState<GridColumnVisibilityModel>({
@@ -127,15 +139,16 @@ export default function FormEntidade({ Pacientes }) {
   <>
   <section>
   <Label label={'Parecer Médico'}></Label>
-  <button className='button'>
+  <button  className={` ${isVariavelVazia() ? 'button2':'button'}`} onClick={Nextpage} disabled={isVariavelVazia()} >
       Novo Parecer
     </button>
 
   </section>
   
     <Box sx={{ height: '85%', width: '100%' }}>
-      <DataGrid rows={Pacientes}
-       
+      <DataGrid 
+      rows={Pacientes} 
+      
         columns={columns}
         disableRowSelectionOnClick={false}
         getRowId={(row) => row._id}
@@ -156,6 +169,10 @@ export default function FormEntidade({ Pacientes }) {
         onColumnVisibilityModelChange={(newModel) =>
           setColumnVisibilityModel(newModel)
         }
+        onRowSelectionModelChange={(newRowSelectionModel) => {
+          setRowSelectionModel(newRowSelectionModel);
+        }}
+        rowSelectionModel={rowSelectionModel}
         onCellClick={handleSelectionChange}
         // onRowSelected={handleRowSelection}
       />
@@ -164,3 +181,4 @@ export default function FormEntidade({ Pacientes }) {
     
   )
 }
+

@@ -10,7 +10,6 @@ import {GetDataPaciente} from '@/functions/getData/Paciente'
 
 export default async  function Paciente(){
     const data = await GetDataPaciente()
-    console.log(data)
     return(
         <div className={styles.MainContainer}>
 

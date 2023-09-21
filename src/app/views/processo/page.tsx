@@ -33,3 +33,12 @@ export default async function DashBoard() {
 //     }, 2000);
 //   });
 // }
+
+
+// async function loadData() {
+//   const [paciente, parecer] = await Promise.all(
+//     [data1(),
+//     data2()]
+//   )
+//   return { paciente, parecer };
+// }
