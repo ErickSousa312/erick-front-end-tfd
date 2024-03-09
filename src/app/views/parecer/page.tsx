@@ -1,19 +1,16 @@
+import styles from '@/styles/Forms/Parecer/Parecer.module.css';
+import Label from '@/app/components/forms/labelForms/label';
+import FormEntidade from '@/app/components/forms/formParecer/forms';
 
+import { data } from '@/lib/fakeData';
 
-import styles from '@/styles/Forms/Parecer/Parecer.module.css'
-import Label from '@/app/components/forms/labelForms/label'
-import FormEntidade from '@/app/components/forms/formParecer/forms'
+import { GetDataPaciente } from '@/functions/getData/Paciente';
 
-import {data} from '@/lib/fakeData'
-
-import {GetDataPaciente} from '@/functions/getData/Paciente'
-
-export default async  function Paciente(){
-    const data = await GetDataPaciente()
-    return(
-        <div className={styles.MainContainer}>
-
-            <FormEntidade Pacientes={data}/>
-        </div>
-    )
+export default async function Paciente() {
+  const data = await GetDataPaciente();
+  return (
+    <div className={styles.MainContainer}>
+      <FormEntidade Pacientes={data} />
+    </div>
+  );
 }

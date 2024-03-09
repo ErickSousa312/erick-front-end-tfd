@@ -1,17 +1,17 @@
 // Em "privateRoutes.js"
-'use client'
+'use client';
 import { useRouter } from 'next/navigation';
 import { useCheckUserAuthenticated } from '@/functions/check-user-authenticated';
 import { useEffect } from 'react';
 import { App_Routes } from '@/constants/app-routes';
 import Loading from '../../views/processo/loading';
 
-import MainView from '@/app/components/MainLayout/MainContainer'
+import MainView from '@/app/components/MainLayout/MainContainer';
 
-type resolvePage= {
-  tokenValido: boolean,
-  loading:boolean
-}
+type resolvePage = {
+  tokenValido: boolean;
+  loading: boolean;
+};
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { push } = useRouter();
@@ -27,7 +27,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   return (
     <>
       {!tokenValido && null}
-      {tokenValido &&<MainView>{children}</MainView>}
+      {tokenValido && <MainView>{children}</MainView>}
     </>
   );
 }

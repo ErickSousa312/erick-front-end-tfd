@@ -1,22 +1,23 @@
-'use client'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { App_Routes } from '@/constants/app-routes'
+'use client';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { App_Routes } from '@/constants/app-routes';
 
-import MainContainer from '@/app/components/MainLayout/MainContainer'
-import PrivateRoute from './privateRoutes'
+import MainContainer from '@/app/components/MainLayout/MainContainer';
+import PrivateRoute from './privateRoutes';
 
-const pagesWithoutDefaultLayout:string[] =  Object.values(App_Routes.public)
+const pagesWithoutDefaultLayout: string[] = Object.values(App_Routes.public);
 
-function GetRoute ({ children }):JSX.Element {
-    const pathname: string = usePathname();
-    const shouldNotUseDefaultLayout: boolean = pagesWithoutDefaultLayout.includes(pathname);
-  
-    return (
-      <>
-        {shouldNotUseDefaultLayout && <div>{children}</div>}
-        {!shouldNotUseDefaultLayout && <MainContainer>{children}</MainContainer>}
-      </>
-    );
-  };
+function GetRoute({ children }): JSX.Element {
+  const pathname: string = usePathname();
+  const shouldNotUseDefaultLayout: boolean =
+    pagesWithoutDefaultLayout.includes(pathname);
 
-export default GetRoute
+  return (
+    <>
+      {shouldNotUseDefaultLayout && <div>{children}</div>}
+      {!shouldNotUseDefaultLayout && <MainContainer>{children}</MainContainer>}
+    </>
+  );
+}
+
+export default GetRoute;
