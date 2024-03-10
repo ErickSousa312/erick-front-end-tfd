@@ -5,9 +5,9 @@ export interface Localization {
   components: {
     MuiDataGrid: {
       defaultProps: {
-        localeText: Partial<GridLocaleText>;
-      };
-    };
+        localeText: Partial<GridLocaleText>,
+      },
+    },
   };
 }
 

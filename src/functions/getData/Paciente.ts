@@ -8,7 +8,8 @@ export async function GetDataPaciente(): Promise<any> {
   const { user }: any = await getServerSession(authOptions);
   const config = {
     headers: {
-      'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImVyaWNrNDIiLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzAwNTExMzI5LCJleHAiOjY4MzY3MTc3OTk1fQ.1WxKVvtIj1qqg8ib4YkOay_njsmy16MUoA7sxP2HELU`,
+      // eslint-disable-next-line prettier/prettier
+      'authorization': `Bearer ${user?.token}`,
       'Content-Type': 'application/json',
     },
   };

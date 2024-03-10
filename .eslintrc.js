@@ -20,7 +20,8 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "all"
+        "trailingComma": "all",
+        "parser": "flow"
       },
       {
         usePrettierrc:true

@@ -57,8 +57,8 @@ export const authOptions: NextAuthOptions = {
       token,
       user,
     }: {
-      token: JWT;
-      user: User;
+      token: JWT,
+      user: User,
     }): Promise<TypeJWT | JWT> => {
       if (user) {
         token.id = user.id;
