@@ -8,8 +8,7 @@ export async function GetDataPaciente(): Promise<any> {
   const { user }: any = await getServerSession(authOptions);
   const config = {
     headers: {
-      // eslint-disable-next-line prettier/prettier
-      'authorization': `Bearer ${user?.token}`,
+      authorization: `Bearer ${user?.token}`,
       'Content-Type': 'application/json',
     },
   };
@@ -18,7 +17,7 @@ export async function GetDataPaciente(): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await axios.get(
-          `http://localhost:3004/pacientes`,
+          `http://localhost:3004/pacientes/`,
           config,
         );
         if (!response.data) {

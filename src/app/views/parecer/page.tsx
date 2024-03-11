@@ -1,6 +1,6 @@
 import styles from '@/styles/Forms/Parecer/Parecer.module.css';
 import Label from '@/app/components/forms/labelForms/label';
-import FormEntidade from '@/app/components/forms/formParecer/forms';
+import TablePacientes from '@/app/components/forms/formParecer/table';
 
 import { data } from '@/lib/fakeData';
 
@@ -10,7 +10,7 @@ export default async function Paciente() {
   const data = await GetDataPaciente();
   return (
     <div className={styles.MainContainer}>
-      <FormEntidade Pacientes={data} />
+      <TablePacientes Pacientes={data} />
     </div>
   );
 }

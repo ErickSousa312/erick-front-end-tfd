@@ -4,21 +4,19 @@ import { TypeError } from '@/app/@types/errorType';
 import { getDataProcessoBySlug } from '@/functions/getData/getProcessoById';
 import { data } from '@/lib/fakeData';
 import { TypeProcesso } from '../../../@types/processo';
+import { GetDataPaciente } from '@/functions/getData/Paciente';
 
 type T = TypePaciente | TypeError;
 type A = TypeProcesso | TypeError;
 
 export default async function Page({ params }: { params: { slug: [number] } }) {
+  console.log(params.slug);
   let DataPaciente: T;
   let DataProcesso: A;
   try {
     // Se a promessa for resolvida com sucesso
-    const [dataPaciente, dataProcesso]: [T, A] = await Promise.all([
-      getDataBySlug(params.slug),
-      getDataProcessoBySlug(params.slug),
-    ]);
+    const dataPaciente: T = await getDataBySlug(params.slug);
     DataPaciente = dataPaciente;
-    DataProcesso = dataProcesso;
   } catch (error) {
     // O código aqui será executado se a promessa for rejeitada (erro)
     console.error('Erro ao buscar dados:', error);
