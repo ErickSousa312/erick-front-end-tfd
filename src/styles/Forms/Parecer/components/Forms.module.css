@@ -1,4 +1,12 @@
 /* Estilo básico para o formulário */
+
+.MainContainer{
+    width: 100%;
+    background-color: #00000000;
+    align-self: auto;
+    margin-top: 0rem;
+}
+
 .section1Container {
     margin-top: 2rem;
     width: 90%;
