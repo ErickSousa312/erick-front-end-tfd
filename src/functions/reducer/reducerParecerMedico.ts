@@ -1,9 +1,12 @@
-import { TypeParecerMedicoAssSocial } from "@/app/@types/parecer";
-import { ActionType } from "@/app/@types/actionReducer";
+import { TypeParecerMedicoAssSocial } from '@/app/@types/parecer';
+import { ActionType } from '@/app/@types/actionReducer';
 
-export function reducerParecer (dadosLogin:TypeParecerMedicoAssSocial, action: ActionType){
-    switch(action.type){
-        case 'setId':
+export function reducerParecer(
+  dadosLogin: TypeParecerMedicoAssSocial,
+  action: ActionType,
+) {
+  switch (action.type) {
+    case 'setId':
       return {
         ...dadosLogin,
         _id: action.payload,
@@ -40,15 +43,14 @@ export function reducerParecer (dadosLogin:TypeParecerMedicoAssSocial, action: A
       };
     default:
       return dadosLogin;
-    }
+  }
 }
 
-
-export const initialStatEntidade : TypeParecerMedicoAssSocial = {
+export const initialStateParecer: TypeParecerMedicoAssSocial = {
   IdPaciente: null,
-    IdProcesso: null,
-    Entidade: "",
-    TranscriParicaoMedico: "",
-    NumeroPortaria: null,
-    Justificativa: "",
-}
+  IdProcesso: '',
+  Entidade: '',
+  TranscriParicaoMedico: '',
+  NumeroPortaria: null,
+  Justificativa: '',
+};

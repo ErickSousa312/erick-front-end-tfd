@@ -9,8 +9,8 @@ import Loading from '../../views/processo/loading';
 import MainView from '@/app/components/MainLayout/MainContainer';
 
 type resolvePage = {
-  tokenValido: boolean;
-  loading: boolean;
+  tokenValido: boolean,
+  loading: boolean,
 };
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {

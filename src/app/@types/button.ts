@@ -1,15 +1,15 @@
-
 export type TypeButton = {
-    icon: React.ElementType,
-    size:number,
-    text: string, 
-    color: string
-}
+  icon: React.ElementType,
+  size: number,
+  texto: string,
+  color: string,
+  onClick?: string,
+  isOpen: boolean,
+};
 
-export type TypeButtonForms={
-    tamanho: string,
-    tipo: string,
-    label:string
-    placeholder:string,
-}
-
+export type TypeButtonForms = {
+  tamanho: string,
+  tipo: string,
+  label: string,
+  placeholder: string,
+};

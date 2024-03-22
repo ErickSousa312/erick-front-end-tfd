@@ -4,6 +4,7 @@ import { App_Routes } from '@/constants/app-routes';
 
 import MainContainer from '@/app/components/MainLayout/MainContainer';
 import PrivateRoute from './privateRoutes';
+import { Theme } from '@radix-ui/themes';
 
 const pagesWithoutDefaultLayout: string[] = Object.values(App_Routes.public);
 
