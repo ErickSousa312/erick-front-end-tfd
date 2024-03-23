@@ -1,3 +1,5 @@
+'use cliente'
+import { useState } from 'react';
 import getTokenSession from '@/functions/getTokenSession';
 import { getServerSession } from 'next-auth';
 
