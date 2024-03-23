@@ -3,7 +3,10 @@
       "jsx": "react",
       "paths": {
         "@/*": ["./src/*"],
+        // Example of custom routes
+        "@/hooks/*": ["./public/*"]
       }
     }
   }
   
+
