@@ -4,36 +4,48 @@ import Label from '@/app/components/forms/labelForms/label';
 import FormEntidade from '@/app/components/forms/formEntidade/form';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import { useSession } from 'next-auth/react';
-export default async function Entidades() {
+import { useReducer } from 'react';
+import {
+  initialStatEntidade,
+  reducerEntidade,
+} from '@/functions/reducer/reducerEntidade';
+export default function Entidades() {
+  const [dataEntidade, dispatch] = useReducer(
+    reducerEntidade,
+    initialStatEntidade,
+  );
   const { data: session, status } = useSession();
   return (
-    <div className={styles.MainContainer}>
+    <form className={styles.MainContainer}>
       <Label label={'Cadastrar Entidade'}></Label>
-      <form>
+      <div>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
+            {/* <h2 className="text-base font-semibold leading-7 text-gray-900">
               Personal Information
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
               Use a permanent address where you can receive mail.
-            </p>
+            </p> */}
 
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
                   htmlFor="first-name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block ps-2 text-sm font-medium leading-6 text-gray-900"
                 >
-                  First name
+                  Nome da Entidade
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={(e) =>
+                      dispatch({
+                        type: 'setNomeEntidade',
+                        payload: e.target.value,
+                      })
+                    }
+                    className="block w-full ps-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -46,13 +58,7 @@ export default async function Entidades() {
                   Last name
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  <input className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                 </div>
               </div>
 
@@ -64,13 +70,7 @@ export default async function Entidades() {
                   Email address
                 </label>
                 <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  <input className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                 </div>
               </div>
 
@@ -320,7 +320,7 @@ export default async function Entidades() {
             Save
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

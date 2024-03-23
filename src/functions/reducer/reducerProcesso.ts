@@ -1,9 +1,9 @@
-import { TypeProcesso } from "@/app/@types/processo";
-import { ActionType } from "@/app/@types/actionReducer";
+import { TypeProcesso } from '@/app/@types/processo';
+import { ActionType } from '@/app/@types/actionReducer';
 
-export function reducerProcesso(dadosLogin:TypeProcesso, action: ActionType){
-    switch (action.type){
-        case 'setId':
+export function reducerProcesso(dadosLogin: TypeProcesso, action: ActionType) {
+  switch (action.type) {
+    case 'setId':
       return {
         ...dadosLogin,
         _id: action.payload,
@@ -105,5 +105,5 @@ export function reducerProcesso(dadosLogin:TypeProcesso, action: ActionType){
       };
     default:
       return dadosLogin;
-    }
+  }
 }
