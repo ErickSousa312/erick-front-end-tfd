@@ -12,6 +12,7 @@ import styles from '@/styles/default_layout/SideBar.module.css';
 import FunctionButton from './FunctionButton';
 import { useState } from 'react';
 import SvgTFD from './svgTFD';
+import { Button } from '@nextui-org/react';
 
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -84,6 +85,7 @@ export default function SideBar() {
             onClick={'/views/entidades'}
             isOpen={isOpen}
           />
+          <Button>Click me</Button>
         </section>
         <footer
           className={`flex ${!isOpen && 'flex-col h-[21%]'} h-[12%] w-[100%] justify-around items-center`}

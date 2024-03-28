@@ -1,5 +1,5 @@
-export type ActionType={
-    payload: number|string,
-    type:string
-    index?: number
-}
+export type ActionType = {
+  payload: number | string,
+  type: string,
+  index?: number,
+};
