@@ -1,9 +1,9 @@
-import { TypeMedProf } from "@/app/@types/medProf";
-import { ActionType } from "@/app/@types/actionReducer";
+import { TypeMedProf } from '@/app/@types/medProf';
+import { ActionType } from '@/app/@types/actionReducer';
 
-export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
-    switch(action.type){
-        case 'setId':
+export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType) {
+  switch (action.type) {
+    case 'setId':
       return {
         ...dadoslogin,
         _id: action.payload,
@@ -50,7 +50,8 @@ export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
       };
     case 'addEspecialidade':
       return {
-        ...dadoslogin, Especialidades: [ { Nome: action.payload }],
+        ...dadoslogin,
+        Especialidades: [{ Nome: action.payload }],
       };
     case 'setCentroDeSaude':
       return {
@@ -69,10 +70,10 @@ export function reducerMedProf(dadoslogin: TypeMedProf, action: ActionType){
       };
     default:
       return dadoslogin;
-    }
+  }
 }
 
-export const initialStateFuncionario : TypeMedProf = {
+export const initialStateFuncionario: TypeMedProf = {
   IdentProfissional: null,
   NomeCompleto: '',
   NumeroRegistro: '',
@@ -80,11 +81,13 @@ export const initialStateFuncionario : TypeMedProf = {
   CPF: '',
   DataNascimento: '',
   Cargo: '',
-  CodigoCBO:'',
-  Especialidades: [{
-      Nome: ''
-  }],
+  CodigoCBO: '',
+  Especialidades: [
+    {
+      Nome: '',
+    },
+  ],
   CentroDeSaude: '',
   DataCadastro: '',
-  Afastamento: ''
-}
+  Afastamento: '',
+};

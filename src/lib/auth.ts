@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
           }),
         });
         const response = await res.json();
-
+        console.log(response);
         // Verifique se a resposta indica erro ou não é bem-sucedida
         if (response?.ok || response?.error) {
           // Lance um erro com a mensagem do erro retornado pela API ou uma mensagem personalizada
