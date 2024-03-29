@@ -29,7 +29,6 @@ export default function FormLogin() {
         password: formValues.password,
         callbackUrl,
       });
-      console.log(res + 'oi');
       if (!res?.error) {
         router.push(callbackUrl);
       } else {
