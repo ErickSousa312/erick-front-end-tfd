@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
         credentials: Record<'userName' | 'password', string>,
         req: Pick<RequestInternal, 'body' | 'query' | 'headers' | 'method'>,
       ): Promise<User> {
-        const res = await fetch('http://localhost:3004/auth/login', {
+        const res = await fetch('http://localhost:3005/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

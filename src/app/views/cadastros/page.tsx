@@ -2,12 +2,13 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
 import styles from '@/styles/default_layout/MainContainer.module.css';
+import Link from 'next/link';
 
 export default async function DashBoard() {
   // const erick = await GetDATA()
   return (
     <div className=" space-y-4  animated fadeIn faster  self-center justify-center items-center inset-0 z-50 outline-none focus:outline-none">
-      <div className="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+      <div className="flex flex-col p-8 bg-white shadow-small hover:shadow-md hover:shodow-lg rounded-2xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {/* <svg
@@ -32,12 +33,14 @@ export default async function DashBoard() {
               </p>
             </div>
           </div>
-          <button className="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-500 text-white rounded-full">
-            Cadastrar
-          </button>
+          <Link href={'cadastros/entidades'}>
+            <button className="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-sm hover:shadow-md active:shadow-small active:bg-emerald-700 active:shadow-none font-medium tracking-wider border-green-500 text-white rounded-full">
+              Cadastrar
+            </button>
+          </Link>
         </div>
       </div>
-      <div className="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+      <div className="flex flex-col p-8 bg-white shadow-small hover:shadow-md hover:shodow-lg rounded-2xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {/* <svg
@@ -63,9 +66,11 @@ export default async function DashBoard() {
               </p>
             </div>
           </div>
-          <button className="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-500 text-white rounded-full">
-            Cadastrar
-          </button>
+          <Link href={'cadastros/funcionarios'}>
+            <button className="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-sm hover:shadow-md active:shadow-small active:bg-emerald-700 active:shadow-none font-medium tracking-wider border-green-500 text-white rounded-full">
+              Cadastrar
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export const useCheckUserAuthenticated = () => {
     setToken(token);
 
     // Fazer a requisição usando Fetch
-    fetch('http://localhost:3004/verifyToken', {
+    fetch('http://localhost:3005/verifyToken', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
