@@ -17,7 +17,7 @@ export async function GetDataPaciente(): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await axios.get(
-          `http://localhost:3004/pacientes/`,
+          `http://localhost:3000/pacientes/`,
           config,
         );
         if (!response.data) {

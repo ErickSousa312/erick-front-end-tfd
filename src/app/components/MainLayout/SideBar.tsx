@@ -16,6 +16,8 @@ import { Button } from '@nextui-org/react';
 
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(true);
+  const [text, setText] = useState()
+  console.log(text)
   return (
     <div className="flex">
       <div
@@ -85,7 +87,7 @@ export default function SideBar() {
             onClick={'/views/entidades'}
             isOpen={isOpen}
           />
-          <Button>Click me</Button>
+          {/* <Button>Click me</Button> */}
         </section>
         <footer
           className={`flex ${!isOpen && 'flex-col h-[21%]'} h-[12%] w-[100%] justify-around items-center`}

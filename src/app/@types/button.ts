@@ -1,3 +1,5 @@
+import { Dispatch } from "react";
+
 export type TypeButton = {
   icon: React.ElementType,
   size: number,

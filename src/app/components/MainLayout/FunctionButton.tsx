@@ -13,6 +13,8 @@ const FunctionButton: React.FC<TypeButton> = ({
 }) => {
   const route = useRouter();
   return (
+    <>
+    
     <button
       className={styles.buttons}
       onClick={() => route.push(onClick)}
@@ -23,6 +25,7 @@ const FunctionButton: React.FC<TypeButton> = ({
         <span className={`text-white ml-3 text-xs  origin-left `}>{texto}</span>
       )}
     </button>
+    </>
   );
 };
 

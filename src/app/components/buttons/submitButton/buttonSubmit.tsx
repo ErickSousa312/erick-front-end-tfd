@@ -20,7 +20,7 @@ function ButtonSubmit<T>({ data, rote }: Props<T>) {
             setLoading(true)
             //testando rejeição de Promisse
             // const res2 = await Promise.reject(new Error("Erro simulado"));
-            const res = await fetch(`http://localhost:3004/${rote}/`, {
+            const res = await fetch(`http://localhost:3000/${rote}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
