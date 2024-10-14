@@ -8,5 +8,5 @@ export const config = {
   //   '/views/funcionarios',
   // ],
 
-  matcher: ["/((?!register|api|login).*)"],
+  // matcher: ["/((?!register|api|login).*)"],
 };
